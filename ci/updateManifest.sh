@@ -29,7 +29,7 @@ fi
 kustomize edit set image ${REPO_MANIFEST_TAG_IMAGE}=${CONTAINER_RELEASE_IMAGE}
 
 git config --global user.name "${GITHUB_ACTOR}"
-git config --global user.email "user@aura.network"
+git config --global user.email "user@tentou.tech"
 git add .
 git commit -m "Update image to ${CONTAINER_RELEASE_IMAGE}"
 git push
