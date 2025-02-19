@@ -2,7 +2,8 @@ name: CI
 
 on:
   push:
-    branches: [develop, staging, evm]
+    branches:
+    - evm
 jobs:
   lint:
     uses: ./.github/workflows/lint.yml
