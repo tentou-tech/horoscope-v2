@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set environment variable
         run: |
-          echo CONTAINER_RELEASE_IMAGE=ghcr.io/aura-nw/erascope:${{ inputs.version }}>> $GITHUB_ENV
+          echo CONTAINER_RELEASE_IMAGE=ghcr.io/tentou-tech/horoscope:${{ inputs.version }}>> $GITHUB_ENV
       - name: Build the Docker image and push it to the registry
         env:
           GITHUB_USERNAME: ${{ github.actor }}
@@ -44,11 +44,11 @@ jobs:
       - uses: imranismail/setup-kustomize@v2
       - name: Set environment variable
         run: |
-          echo CONTAINER_RELEASE_IMAGE=ghcr.io/aura-nw/erascope:${{ inputs.version }}>> $GITHUB_ENV
-          echo REPO_MANIFEST_NAME=gitops-prod >> $GITHUB_ENV
-          echo REPO_MANIFEST_URL=github.com/aura-nw/gitops-prod.git >> $GITHUB_ENV
+          echo CONTAINER_RELEASE_IMAGE=ghcr.io/tentou-tech/horoscope:${{ inputs.version }}>> $GITHUB_ENV
+          echo REPO_MANIFEST_NAME=gitops >> $GITHUB_ENV
+          echo REPO_MANIFEST_URL=github.com/tentou-tech/gitops.git >> $GITHUB_ENV
           echo REPO_MANIFEST_BRANCH=main >> $GITHUB_ENV
-          echo REPO_MANIFEST_ENV_MAIN=./clusters/k8s-xstaxy/horoscope-v2/horoscope-crawl-xstaxy >> $GITHUB_ENV
+          echo REPO_MANIFEST_ENV_MAIN=./clusters/k8s-main/horoscope-v2/story-mainnet >> $GITHUB_ENV
           echo REPO_MANIFEST_TAG_IMAGE=image_erascope >> $GITHUB_ENV
       - name: Update manifest
         env:
