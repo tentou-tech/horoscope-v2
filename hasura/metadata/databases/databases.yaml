@@ -1,124 +1,15 @@
-- name: default
+- name: storymainnet
   kind: postgres
   configuration:
     connection_info:
       database_url:
-        from_env: HASURA_GRAPHQL_DATABASE_URL
-      isolation_level: read-committed
-      pool_settings:
-        connection_lifetime: 600
-        idle_timeout: 180
-        max_connections: 50
-        retries: 1
-      use_prepared_statements: true
-  tables: '!include default/tables/tables.yaml'
-- name: auratestnet
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_TESTNET
+        from_env: DATABASE_URL_STORY_MAINNET
       isolation_level: read-committed
       use_prepared_statements: false
   customization:
     naming_convention: hasura-default
     root_fields:
-      namespace: auratestnet
+      namespace: storymainnet
     type_names:
-      prefix: auratestnet_
-  tables: '!include auratestnet/tables/tables.yaml'
-  functions: '!include auratestnet/functions/functions.yaml'
-- name: euphoria
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_EUPHORIA
-      isolation_level: read-committed
-      pool_settings:
-        connection_lifetime: 600
-        max_connections: 5
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: euphoria
-    type_names:
-      prefix: euphoria_
-  tables: '!include euphoria/tables/tables.yaml'
-- name: evmostestnet
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_EVMOS_TESTNET
-      isolation_level: read-committed
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: evmostestnet
-    type_names:
-      prefix: evmostestnet_
-  tables: '!include evmostestnet/tables/tables.yaml'
-- name: pacific
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_PACIFIC
-      isolation_level: read-committed
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: pacific
-    type_names:
-      prefix: pacific_
-  tables: '!include pacific/tables/tables.yaml'
-  functions: '!include pacific/functions/functions.yaml'
-- name: serenity
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_SERENITY
-      isolation_level: read-committed
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: serenity
-    type_names:
-      prefix: serenity_
-  tables: '!include serenity/tables/tables.yaml'
-- name: sourcify
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_SOURCIFY
-      isolation_level: read-committed
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: sourcify
-    type_names:
-      prefix: sourcify_
-  tables: '!include sourcify/tables/tables.yaml'
-- name: xstaxy
-  kind: postgres
-  configuration:
-    connection_info:
-      database_url:
-        from_env: DATABASE_URL_XSTAXY
-      isolation_level: read-committed
-      use_prepared_statements: false
-  customization:
-    naming_convention: hasura-default
-    root_fields:
-      namespace: xstaxy
-    type_names:
-      prefix: xstaxy_
-  tables: '!include xstaxy/tables/tables.yaml'
+      prefix: storymainnet_
+  tables: '!include storymainnet/tables/tables.yaml'
