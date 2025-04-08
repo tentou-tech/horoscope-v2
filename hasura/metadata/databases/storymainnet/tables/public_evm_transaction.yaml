@@ -90,3 +90,4 @@ select_permissions:
         - value
       filter: {}
       limit: 100
+      allow_aggregations: true
