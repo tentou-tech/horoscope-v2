@@ -425,7 +425,8 @@
     "concurrencyHandleTokenMedia": 10,
     "timeRefreshErc721Stats": "1 * * * *",
     "timeRefreshMViewErc721HolderStats": "*/10 * * * *",
-    "statementTimeout": 600000
+    "statementTimeout": 600000,
+    "enableUploadMediaS3": true
   },
   "crawlEvmProxyHistory": {
     "key": "crawlEvmProxyHistory",

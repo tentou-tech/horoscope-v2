@@ -261,10 +261,12 @@ export default class Erc721Service extends BullableService {
       }
     }
     // upload & update link s3
-    tokenMedia = await Erc721MediaHandler.updateMediaS3(
-      tokenMedia,
-      this.logger
-    );
+    if (config.erc721.enableUploadMediaS3 === true) {
+      tokenMedia = await Erc721MediaHandler.updateMediaS3(
+        tokenMedia,
+        this.logger
+      );
+    }
     this.logger.info(tokenMedia);
     await Erc721Token.query()
       .where('id', tokenMedia.erc721_token_id)
