@@ -26,7 +26,10 @@ export default class ServicesManagerService extends BaseService {
         type: 'array',
         optional: false,
         items: 'string',
-        enum: [Object.values(BULL_JOB_NAME), Object.values(BULL_JOB_NAME_EVM)],
+        enum: [
+          ...Object.values(BULL_JOB_NAME),
+          ...Object.values(BULL_JOB_NAME_EVM),
+        ],
       },
     },
   })
