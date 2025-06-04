@@ -5,8 +5,9 @@ import {
 import { Context, ServiceBroker } from 'moleculer';
 import config from '../../../config.json' assert { type: 'json' };
 import BullableService from '../../base/bullable.service';
-import { BULL_JOB_NAME, SERVICE } from '../../common';
+import { SERVICE, BULL_JOB_NAME } from '../../common';
 import { BlockCheckpoint } from '../../models';
+import { BULL_JOB_NAME as BULL_JOB_NAME_EVM } from '../evm/constant';
 
 @Service({
   name: SERVICE.V1.ServicesManager.key,
@@ -32,6 +33,7 @@ export default class ServicesManagerService extends BullableService {
     const result: Record<string, boolean> = {};
     const jobBlock = await BlockCheckpoint.query()
       .where('job_name', BULL_JOB_NAME.CRAWL_BLOCK)
+      .orWhere('job_name', BULL_JOB_NAME_EVM.CRAWL_EVM_BLOCK)
       .first()
       .throwIfNotFound();
     const jobsHeight = await BlockCheckpoint.query().whereIn(
