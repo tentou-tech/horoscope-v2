@@ -414,6 +414,17 @@ export default class CrawlEvmAccountService extends BullableService {
           maxFeePerGas: tx.maxFeePerGas,
           maxPriorityFeePerGas: tx.maxPriorityFeePerGas,
           to: tx.to,
+          authorizationList: tx.authorizationList?.map((e: any) => ({
+            chainId: e.chainId,
+            address: e.address,
+            nonce: e.nonce,
+            signature: ethers.Signature.from({
+              v: e.v,
+              yParity: e.yParity,
+              r: e.r,
+              s: e.s,
+            }),
+          })),
         };
         // const txs = (await ethers.resolveProperties(txData)) as any;
         const rawTx = ethers.Transaction.from(txData).unsignedSerialized; // returns RLP encoded tx
