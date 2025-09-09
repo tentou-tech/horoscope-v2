@@ -467,7 +467,7 @@ export default class CrawlEvmAccountService extends BullableService {
 
         if (tx.from !== recoveredAddress.toLowerCase()) {
           this.logger.error(`cannot recover address at ${tx.hash}`);
-          throw Error(`cannot recover address at ${tx.hash}`);
+          return;
         }
 
         const compressPubkey = Secp256k1.compressPubkey(
